@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOVARA — Showroom</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ===================== LOADER ===================== -->
+<div class="loader" id="loader">
+  <div class="loader-ring"></div>
+  <div class="loader-text">NOVARA</div>
+</div>
+
+<!-- ===================== CURSOR GLOW ===================== -->
+<div class="cursor-glow" id="cursorGlow"></div>
+
+<!-- ===================== NAVBAR ===================== -->
+<header class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="#home" class="nav-logo">NOV<span>A</span>RA</a>
+    <nav class="nav-center">
+      <a href="#home" class="active">Home</a>
+      <a href="#products">Products</a>
+      <a href="#categories">Categories</a>
+      <a href="#tour">Virtual Tour</a>
+      <a href="#offers">Offers</a>
+      <a href="#news">Journal</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+      <button class="icon-btn" aria-label="Wishlist"><i class="fa-regular fa-heart"></i></button>
+      <button class="icon-btn cart-btn" aria-label="Cart"><i class="fa-solid fa-bag-shopping"></i><span class="cart-count">2</span></button>
+      <div class="lang-select">
+        <button class="icon-btn lang-btn" id="langBtn"><i class="fa-solid fa-globe"></i><span id="langCurrent">EN</span></button>
+        <ul class="lang-dropdown" id="langDropdown">
+          <li data-lang="EN">English</li>
+          <li data-lang="HI">हिन्दी</li>
+          <li data-lang="JA">日本語</li>
+          <li data-lang="FR">Français</li>
+          <li data-lang="DE">Deutsch</li>
+          <li data-lang="ES">Español</li>
+          <li data-lang="AR">العربية</li>
+          <li data-lang="ZH">中文</li>
+          <li data-lang="RU">Русский</li>
+          <li data-lang="IT">Italiano</li>
+        </ul>
+      </div>
+      <button class="icon-btn theme-toggle" id="themeToggle" aria-label="Toggle theme"><i class="fa-solid fa-circle-half-stroke"></i></button>
+      <button class="icon-btn profile-btn" aria-label="Profile"><i class="fa-regular fa-user"></i></button>
+    </div>
+    <button class="nav-burger" id="navBurger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero" id="home">
+  <canvas class="particle-canvas" id="particleCanvas"></canvas>
+  <div class="hero-glow"></div>
+  <div class="hero-silhouettes" id="heroSilhouettes" aria-hidden="true"></div>
+
+  <div class="hero-content">
+    <p class="hero-eyebrow">NOVARA FLAGSHIP &mdash; DIGITAL SHOWROOM</p>
+    <h1 class="hero-title">
+      <span class="line">Shopping,</span>
+      <span class="line">Rendered <em>Beyond</em></span>
+      <span class="line">Reality.</span>
+    </h1>
+    <p class="hero-subtitle">Step inside our immersive virtual showroom and explore<br class="br-desktop"> every product in cinematic 360&deg;.</p>
+    <div class="hero-actions">
+      <button class="btn btn-primary" id="enterShowroomBtn"><span>Enter Showroom</span><i class="fa-solid fa-arrow-right"></i></button>
+      <button class="btn btn-ghost" id="exploreProductsBtn"><span>Explore Products</span></button>
+    </div>
+  </div>
+
+  <div class="hero-scroll-cue">
+    <span>Scroll</span>
+    <div class="scroll-line"><div class="scroll-dot"></div></div>
+  </div>
+</section>
+
+<!-- ===================== STRIP / MARQUEE ===================== -->
+<div class="marquee-strip">
+  <div class="marquee-track">
+    <span>360&deg; RENDER</span><span>&bull;</span><span>FREE GLOBAL SHIPPING</span><span>&bull;</span><span>VIRTUAL TRY &amp; ROTATE</span><span>&bull;</span><span>AAA SHOWROOM TECH</span><span>&bull;</span>
+    <span>360&deg; RENDER</span><span>&bull;</span><span>FREE GLOBAL SHIPPING</span><span>&bull;</span><span>VIRTUAL TRY &amp; ROTATE</span><span>&bull;</span><span>AAA SHOWROOM TECH</span><span>&bull;</span>
+  </div>
+</div>
+
+<!-- ===================== CATEGORIES ===================== -->
+<section class="categories" id="categories">
+  <div class="section-head">
+    <p class="section-eyebrow">Browse by world</p>
+    <h2 class="section-title">Find your aisle</h2>
+  </div>
+  <div class="category-grid" id="categoryGrid"></div>
+</section>
+
+<!-- ===================== PRODUCT SHOWROOM ===================== -->
+<section class="showroom" id="products">
+  <div class="section-head">
+    <p class="section-eyebrow">The Collection</p>
+    <h2 class="section-title">Floating product islands</h2>
+    <p class="section-sub">Every piece rendered in real&#8209;time 360&deg;. Hover to inspect, click to step closer.</p>
+  </div>
+  <div class="island-grid" id="islandGrid"></div>
+</section>
+
+<!-- ===================== VIRTUAL TOUR BANNER ===================== -->
+<section class="tour-banner" id="tour">
+  <div class="tour-bg"></div>
+  <div class="tour-content">
+    <p class="section-eyebrow light">Walk the floor</p>
+    <h2 class="tour-title">The showroom isn't a page.<br>It's a place.</h2>
+    <p class="tour-sub">Drag to orbit, WASD to walk, or glide through on mobile with a single finger. Every surface reflects, every light reacts.</p>
+    <button class="btn btn-primary" id="tourBtn"><span>Launch Virtual Tour</span><i class="fa-solid fa-cube"></i></button>
+  </div>
+</section>
+
+<!-- ===================== OFFERS / PROMO SLIDER ===================== -->
+<section class="offers" id="offers">
+  <div class="section-head">
+    <p class="section-eyebrow">Limited runs</p>
+    <h2 class="section-title">Current showroom events</h2>
+  </div>
+  <div class="promo-slider" id="promoSlider">
+    <div class="promo-track" id="promoTrack"></div>
+  </div>
+  <div class="promo-dots" id="promoDots"></div>
+</section>
+
+<!-- ===================== JOURNAL / NEWS ===================== -->
+<section class="journal" id="news">
+  <div class="section-head">
+    <p class="section-eyebrow">From the showroom floor</p>
+    <h2 class="section-title">Journal</h2>
+  </div>
+  <div class="journal-grid" id="journalGrid"></div>
+</section>
+
+<!-- ===================== NEWSLETTER ===================== -->
+<section class="newsletter" id="contact">
+  <div class="newsletter-inner">
+    <h2>Get the next drop first.</h2>
+    <p>One email a week. New arrivals, showroom events, nothing else.</p>
+    <form class="newsletter-form" id="newsletterForm">
+      <input type="email" placeholder="you@email.com" required>
+      <button type="submit"><span>Notify Me</span><i class="fa-solid fa-arrow-right"></i></button>
+    </form>
+    <p class="newsletter-status" id="newsletterStatus"></p>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="nav-logo">NOV<span>A</span>RA</div>
+      <p>The digital flagship store. Built for people who shop with their eyes first.</p>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <a href="#" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+        <a href="#" aria-label="Twitter / X"><i class="fa-brands fa-x-twitter"></i></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="#">About Novara</a>
+      <a href="#">Careers</a>
+      <a href="#">Press</a>
+      <a href="#">Sustainability</a>
+    </div>
+    <div class="footer-col">
+      <h4>Support</h4>
+      <a href="#">Help Center</a>
+      <a href="#">Shipping</a>
+      <a href="#">Refund Policy</a>
+      <a href="#">Track Order</a>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Cookie Settings</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Novara Inc. All rights reserved.</p>
+    <p class="footer-credit">Showroom rendered in real&#8209;time.</p>
+  </div>
+</footer>
+
+<!-- ===================== PRODUCT MODAL ===================== -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-particles" id="modalParticles"></div>
+  <div class="product-modal" id="productModal">
+    <button class="modal-close" id="modalClose" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+    <div class="modal-grid">
+      <div class="modal-visual">
+        <div class="modal-spotlight"></div>
+        <div class="holo-stage modal-holo" id="modalHolo">
+          <div class="holo-ring"></div>
+          <div class="holo-card"></div>
+          <div class="holo-shadow"></div>
+        </div>
+        <div class="modal-360-tag"><i class="fa-solid fa-rotate"></i> 360&deg; VIEW</div>
+      </div>
+      <div class="modal-info">
+        <p class="modal-category" id="modalCategory">Category</p>
+        <h3 class="modal-name" id="modalName">Product Name</h3>
+        <div class="modal-rating" id="modalRating"></div>
+        <p class="modal-desc" id="modalDesc">Description</p>
+
+        <div class="modal-specs" id="modalSpecs"></div>
+
+        <div class="modal-price-row">
+          <div class="modal-price" id="modalPrice">$0</div>
+          <div class="modal-stock"><i class="fa-solid fa-circle"></i> In stock &mdash; ships in 2 days</div>
+        </div>
+
+        <div class="modal-actions">
+          <button class="btn btn-primary btn-block" id="modalBuyBtn"><span>Buy Now</span><i class="fa-solid fa-bag-shopping"></i></button>
+          <button class="icon-btn modal-wishlist" aria-label="Wishlist"><i class="fa-regular fa-heart"></i></button>
+          <button class="icon-btn modal-share" aria-label="Share"><i class="fa-solid fa-share-nodes"></i></button>
+        </div>
+
+        <div class="modal-related">
+          <h5>You may also like</h5>
+          <div class="modal-related-grid" id="modalRelatedGrid"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== TOAST ===================== -->
+<div class="toast" id="toast"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
